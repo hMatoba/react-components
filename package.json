@@ -2,12 +2,12 @@
   "name": "react-components",
   "version": "0.0.1",
   "description": "react components",
-  "main": "dist/cjs/index.js",
+  "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "rollup -c --bundleConfigAsCjs",
+    "build": "vite build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
@@ -26,9 +26,6 @@
   },
   "homepage": "https://github.com/hMatoba/react-components#readme",
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^25.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.0",
-    "@rollup/plugin-typescript": "^11.1.2",
     "@storybook/addon-essentials": "^7.3.2",
     "@storybook/addon-interactions": "^7.3.2",
     "@storybook/addon-links": "^7.3.2",
@@ -38,12 +35,17 @@
     "@storybook/react-vite": "^7.3.2",
     "@storybook/testing-library": "^0.2.0",
     "@types/react": "^18.2.20",
+    "@vitejs/plugin-react": "^4.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rollup": "^3.28.0",
-    "rollup-plugin-dts": "^6.0.0",
+    "sass": "^1.66.1",
     "storybook": "^7.3.2",
     "tslib": "^2.6.2",
-    "typescript": "^5.1.6"
+    "typescript": "^5.1.6",
+    "vite": "^4.4.9",
+    "vite-plugin-dts": "^3.5.2"
+  },
+  "dependencies": {
+    "un": "^0.0.0"
   }
 }
