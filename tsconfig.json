@@ -25,9 +25,7 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": [
-    "globals.d.ts",
-  ],
+  "include": ["globals.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": [
     "dist",
     "node_modules",
