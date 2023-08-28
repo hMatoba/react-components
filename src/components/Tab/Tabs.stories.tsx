@@ -1,38 +1,38 @@
-import React, { useState } from "react";
-import { Tabs } from "./Tabs";
-import { StoryFn } from "@storybook/react";
+import { StoryFn } from '@storybook/react';
+import React, { useState } from 'react';
+import { Tabs } from './Tabs';
 
 export default {
-  title: "Tabs",
+  title: 'Tabs',
   component: Tabs,
 };
 
 const Template: StoryFn = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const handleClick = (index) => {
+  const handleClick = (index: number) => {
     setSelectedTab(index);
   };
   const items = [
     {
-      label: "item1",
+      label: 'item1',
       index: 0,
       selected: false,
       onClick: handleClick,
     },
     {
-      label: "item2",
+      label: 'item2',
       index: 1,
       selected: false,
       onClick: handleClick,
     },
     {
-      label: "item3",
+      label: 'item3',
       index: 2,
       selected: false,
       onClick: handleClick,
     },
     {
-      label: "item4",
+      label: 'item4',
       index: 3,
       selected: false,
       onClick: handleClick,

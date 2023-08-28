@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from 'react';
 import styles from './Tabs.module.scss';
 
 type Visibility = 'visible' | 'hidden';
@@ -9,34 +9,43 @@ type Props = {
   selectedTabElement: Element | undefined;
 };
 
-export const ActiveMarkBar: React.FC<Props> = ({refElements, selectedTabIndex, selectedTabElement}) => {
+export const ActiveMarkBar: React.FC<Props> = ({
+  refElements,
+  selectedTabIndex,
+  selectedTabElement,
+}) => {
   const _refElements = Array.from(refElements ?? []);
   const nonActiveMarkProps = getNonActiveMarkProps(
     _refElements,
-    selectedTabIndex
+    selectedTabIndex,
   );
-  const [activeMarkVisibility, setActiveMarkVisibility] = useState<Visibility>('visible');
+  const [activeMarkVisibility, setActiveMarkVisibility] =
+    useState<Visibility>('visible');
 
   useEffect(() => {
-    setTimeout(() => setActiveMarkVisibility('visible'), 200)
+    setTimeout(() => setActiveMarkVisibility('visible'), 200);
   });
 
-  const markProps = useMemo(() => [
+  const markProps = useMemo(
+    () => [
       ...nonActiveMarkProps,
       getActiveMarkProp(selectedTabElement, activeMarkVisibility),
     ],
-    [activeMarkVisibility, nonActiveMarkProps, selectedTabElement]
+    [activeMarkVisibility, nonActiveMarkProps, selectedTabElement],
   );
 
   const markElementsOnBar = useMemo(
-    () => markProps.map((props, index) => {
-      return <div key={index} className={props.className} style={props.styles} />;
-    }),
-    [markProps]
+    () =>
+      markProps.map((props, index) => {
+        return (
+          <div key={index} className={props.className} style={props.styles} />
+        );
+      }),
+    [markProps],
   );
 
-  return <div className={styles.selectedMarkBar}>{markElementsOnBar}</div>
-}
+  return <div className={styles.selectedMarkBar}>{markElementsOnBar}</div>;
+};
 
 const getNonActiveMarkProps = (
   refElements: Element[],
@@ -60,7 +69,7 @@ const getNonActiveMarkProps = (
 
 const getActiveMarkProp = (
   selectedTabElement: Element | undefined,
-  activeMarkVisibility: Visibility
+  activeMarkVisibility: Visibility,
 ) => {
   const selectedTabWidth = selectedTabElement?.clientWidth ?? 0;
   return {
@@ -68,8 +77,7 @@ const getActiveMarkProp = (
     styles: {
       maxWidth: selectedTabWidth,
       positionn: 'relative',
-      visibility: activeMarkVisibility 
-    }
-  }
+      visibility: activeMarkVisibility,
+    },
+  };
 };
-

@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "./Tab.module.scss";
+import React from 'react';
+import styles from './Tab.module.scss';
 
 type Props = {
   label: string;

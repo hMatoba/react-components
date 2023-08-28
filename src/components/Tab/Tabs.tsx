@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import { Tab } from "./Tab";
+import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { ActiveMarkBar } from './ActiveMarkBar';
+import { HoverMarkBar } from './HoverMarkBar';
+import { Tab } from './Tab';
 import styles from './Tabs.module.scss';
-import { HoverMarkBar } from "./HoverMarkBar";
-import { ActiveMarkBar } from "./ActiveMarkBar";
 
 type Item = {
   label: string;
@@ -39,7 +39,7 @@ export const Tabs: React.FC<Props> = ({ items, selected }) => {
             index={index}
             onClick={(index) => {
               onClick(index);
-              setTabElements(divElement.current?.children)
+              setTabElements(divElement.current?.children);
             }}
             onMouseEnter={() => {
               setHoverOn(index);
@@ -49,7 +49,8 @@ export const Tabs: React.FC<Props> = ({ items, selected }) => {
             }}
           />
         );
-      }), [items, selected]
+      }),
+    [items, selected],
   );
 
   return (
@@ -59,8 +60,12 @@ export const Tabs: React.FC<Props> = ({ items, selected }) => {
       </div>
       <div className={styles.statusBar}>
         <HoverMarkBar refElements={tabElements} hoverOnIndex={hoverOn} />
-        <ActiveMarkBar refElements={tabElements} selectedTabIndex={selected} selectedTabElement={selectedTabElement} />
+        <ActiveMarkBar
+          refElements={tabElements}
+          selectedTabIndex={selected}
+          selectedTabElement={selectedTabElement}
+        />
       </div>
     </div>
-  )
-}
+  );
+};
