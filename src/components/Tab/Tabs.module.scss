@@ -1,0 +1,84 @@
+.wrapper {
+  height: 100%;
+}
+
+.tabList {
+  display: flex;
+  height: 100%;
+}
+
+.statusBar {
+  position: relative;
+  background-color: #eee;
+  margin-top: -4px;
+  height: 4px;
+  pointer-events: none;
+}
+
+.hoverMarkBar {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 4px;
+  pointer-events: none;
+}
+
+.selectedMarkBar {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 6px;
+  margin-top: -1px;
+  pointer-events: none;
+}
+
+.activeMark {
+  width: 100%;
+  background-color: #33ff33;
+  border-radius: 3px;
+}
+
+.inactiveMark {
+  border-radius: 2px;
+}
+
+.inflatedBlock {
+  width: 100%;
+  animation: expand ease-in 0.38s;
+}
+
+.deflatedBlock {
+  width: 0;
+  animation: shrink cubic-bezier(0.01, 0.97, 0.75, 1) 0.2s;
+}
+
+.fixedInflatedBlock {
+  width: 100%;
+}
+
+.fixedDeflatedBlock {
+  width: 0%;
+}
+
+.hoverOn {
+  background-color: #CCFFCC;
+  border-radius: 2px;
+}
+
+@keyframes expand {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes shrink {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0;
+  }
+}

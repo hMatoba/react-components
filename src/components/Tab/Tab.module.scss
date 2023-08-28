@@ -1,0 +1,19 @@
+.tab {
+  font-size: 15px;
+  color: #111;
+  padding: 16px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  &:hover {
+    color: #333;
+    background-color: #efefef;
+  }
+
+  &[data-selected='true'] {
+    cursor: default;
+  }
+}
