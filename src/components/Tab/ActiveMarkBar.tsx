@@ -20,7 +20,7 @@ export const ActiveMarkBar: React.FC<Props> = ({
     selectedTabIndex,
   );
   const [activeMarkVisibility, setActiveMarkVisibility] =
-    useState<Visibility>('visible');
+    useState<Visibility>('hidden');
 
   useEffect(() => {
     setTimeout(() => setActiveMarkVisibility('visible'), 200);
