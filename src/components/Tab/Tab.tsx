@@ -20,6 +20,8 @@ export const Tab: React.FC<Props> = ({
 }) => {
   return (
     <div
+      role="button"
+      tabIndex={0}
       className={styles.tab}
       data-selected={selected}
       data-value={index}
