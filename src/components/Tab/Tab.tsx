@@ -5,7 +5,7 @@ type Props = {
   label: string;
   index: number;
   selected: boolean;
-  onClick: (index: number) => void;
+  onSelect: (index: number) => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
 };
@@ -14,7 +14,7 @@ export const Tab: React.FC<Props> = ({
   label,
   index,
   selected,
-  onClick,
+  onSelect,
   onMouseEnter,
   onMouseLeave,
 }) => {
@@ -23,7 +23,8 @@ export const Tab: React.FC<Props> = ({
       className={styles.tab}
       data-selected={selected}
       data-value={index}
-      onClick={() => onClick(index)}
+      onClick={() => onSelect(index)}
+      onKeyDown={() => onSelect(index)}
       onMouseEnter={() => onMouseEnter?.()}
       onMouseLeave={() => onMouseLeave?.()}
     >

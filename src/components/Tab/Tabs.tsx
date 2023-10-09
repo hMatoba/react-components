@@ -8,7 +8,7 @@ type Item = {
   label: string;
   index: number;
   selected: boolean;
-  onClick: (index: number) => void;
+  onSelect: (index: number) => void;
 };
 
 type Props = {
@@ -30,15 +30,15 @@ export const Tabs: React.FC<Props> = ({ items, selected }) => {
   const tabList = useMemo(
     () =>
       items.map((props) => {
-        const { label, index, onClick } = props;
+        const { label, index, onSelect } = props;
         return (
           <Tab
             key={index}
             label={label}
             selected={index === selected}
             index={index}
-            onClick={(index) => {
-              onClick(index);
+            onSelect={(index) => {
+              onSelect(index);
               setTabElements(divElement.current?.children);
             }}
             onMouseEnter={() => {

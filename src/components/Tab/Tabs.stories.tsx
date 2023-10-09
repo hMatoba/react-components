@@ -9,7 +9,7 @@ export default {
 
 const Template: StoryFn = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const handleClick = (index: number) => {
+  const handleSelect = (index: number) => {
     setSelectedTab(index);
   };
   const items = [
@@ -17,25 +17,25 @@ const Template: StoryFn = () => {
       label: 'item1',
       index: 0,
       selected: false,
-      onClick: handleClick,
+      onSelect: handleSelect,
     },
     {
       label: 'item2',
       index: 1,
       selected: false,
-      onClick: handleClick,
+      onSelect: handleSelect,
     },
     {
       label: 'item3',
       index: 2,
       selected: false,
-      onClick: handleClick,
+      onSelect: handleSelect,
     },
     {
       label: 'item4',
       index: 3,
       selected: false,
-      onClick: handleClick,
+      onSelect: handleSelect,
     },
   ];
   return (
