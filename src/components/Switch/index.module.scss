@@ -1,0 +1,142 @@
+.wrapper {
+  position: relative;
+  border: none;
+  background-color: lightgray;
+  border: none;
+  border-radius: 18px;
+  width: 72px;
+  height: 36px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.circle {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 28px;
+  height: 28px;
+  background-color: white;
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// コンポーネントの背景色
+
+.bg_onFixed {
+  background-color: mediumseagreen;
+}
+
+.bg_offFixed {
+  background-color: lightgray;
+}
+
+.bg_onAnimation {
+  animation: bg-color-forward 300ms forwards;
+}
+
+.bg_offAnimation {
+  animation: bg-color-reverse 300ms forwards;
+}
+
+@keyframes bg-color-forward {
+  from {
+    background-color: lightgray;
+  }
+  
+  to {
+    background-color: mediumseagreen; 
+  }  
+}
+
+@keyframes bg-color-reverse {
+  from {
+    background-color: mediumseagreen;
+  }
+  
+  to {
+    background-color: lightgray; 
+  }  
+}
+
+// 〇の位置
+
+.circle_onFixed {
+  transform: translateX(0);
+}
+
+.circle_offFixed {
+  transform: translateX(36px);
+}
+
+.circle_onAnimation {
+  animation: circle-position-forward 300ms forwards;
+}
+
+.circle_offAnimation {
+  animation: circle-position-reverse 300ms forwards;
+}
+
+@keyframes circle-position-forward {
+  from {
+    transform: translateX(36px);
+  }
+  
+  to {
+    transform: translateX(0);
+  }  
+}
+
+@keyframes circle-position-reverse {
+  from {
+    transform: translateX(0);
+  }
+  
+  to {
+    transform: translateX(36px);
+  }  
+}
+
+// チェックマークの色
+
+.iconColor_onFixed {
+  fill: mediumseagreen;
+}
+
+.iconColor_offFixed {
+  fill: transparent;
+}
+
+.iconColor_onAnimation {
+  animation: icon-color-forward 300ms forwards;
+}
+
+.iconColor_offAnimation {
+  animation: icon-color-reverse 300ms forwards;
+}
+
+@keyframes icon-color-forward {
+  from {
+    fill: transparent;
+  }
+  
+  to {
+    fill: mediumseagreen; 
+  }  
+}
+
+@keyframes icon-color-reverse {
+  from {
+    fill: mediumseagreen;
+  }
+  
+  to {
+    fill: transparent; 
+  }  
+}
