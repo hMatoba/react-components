@@ -52,7 +52,9 @@ export const Switch: React.FC<Props> = ({ on, disabled, onClick }) => {
       setAdditionalStyle(ANIMATION_STYLES.off);
       return;
     }
-  }, [animationEnabled, on]);
+    // propsのonが切り替わるときのみ適用スタイルの入れ替えを行う
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [on]);
 
   const handleClick = useCallback(() => {
     onClick();
