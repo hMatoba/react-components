@@ -9,38 +9,30 @@ export default {
 
 const Template: StoryFn = () => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const handleSelect = (index: number) => {
+  const handleTabClick = (index: number) => {
     setSelectedTab(index);
   };
   const items = [
     {
       label: 'item1',
       index: 0,
-      selected: false,
-      onSelect: handleSelect,
     },
     {
       label: 'item2',
       index: 1,
-      selected: false,
-      onSelect: handleSelect,
     },
     {
       label: 'item3',
       index: 2,
-      selected: false,
-      onSelect: handleSelect,
     },
     {
       label: 'item4',
       index: 3,
-      selected: false,
-      onSelect: handleSelect,
     },
   ];
   return (
     <div>
-      <Tabs items={items} selected={selectedTab} />
+      <Tabs items={items} selected={selectedTab} onTabClick={handleTabClick} />
     </div>
   );
 };
