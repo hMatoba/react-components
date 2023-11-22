@@ -16,7 +16,6 @@
 }
 
 .hoverMarkBar {
-  position: absolute;
   display: flex;
   width: 100%;
   height: 4px;
@@ -24,61 +23,22 @@
 }
 
 .selectedMarkBar {
-  position: absolute;
   display: flex;
   width: 100%;
-  height: 6px;
-  margin-top: -1px;
+  height: 4px;
+  margin-top: -4px;
   pointer-events: none;
 }
 
 .activeMark {
-  width: 100%;
   background-color: #33ff33;
-  border-radius: 3px;
-}
-
-.inactiveMark {
   border-radius: 2px;
-}
+  height: 4px;
 
-.inflatedBlock {
-  width: 100%;
-  animation: expand ease-in 0.38s;
-}
-
-.deflatedBlock {
-  width: 0;
-  animation: shrink cubic-bezier(0.01, 0.97, 0.75, 1) 0.2s;
-}
-
-.fixedInflatedBlock {
-  width: 100%;
-}
-
-.fixedDeflatedBlock {
-  width: 0%;
+  transition: width 0.25s, left 0.25s, right 0.25s;
 }
 
 .hoverOn {
   background-color: #CCFFCC;
   border-radius: 2px;
-}
-
-@keyframes expand {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
-  }
-}
-
-@keyframes shrink {
-  from {
-    width: 100%;
-  }
-  to {
-    width: 0;
-  }
 }

@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import React from 'react';
 import styles from './Tabs.module.scss';
 
 type Props = {
@@ -11,35 +11,28 @@ export const HoverMarkBar: React.FC<Props> = ({
   hoverOnIndex,
 }) => {
   const _refElements = Array.from(refElements ?? []);
-  const hoverMarkProps = getHoverMarkProps(_refElements, hoverOnIndex);
 
-  const hoverMarkElements = useMemo(
-    () =>
-      hoverMarkProps.map((item, index) => {
-        return (
-          <div key={index} className={item.className} style={item.styles} />
-        );
-      }),
-    [hoverMarkProps],
+  return (
+    <div className={styles.hoverMarkBar}>
+      <HoverMark refElements={_refElements} hoverOnIndex={hoverOnIndex} />
+    </div>
   );
-
-  return <div className={styles.hoverMarkBar}>{hoverMarkElements}</div>;
 };
 
-const getHoverMarkProps = (
-  refElements: Element[],
-  hoverOnIndex: number | undefined,
-) => {
+const HoverMark: React.FC<{
+  refElements: Element[];
+  hoverOnIndex: number | undefined;
+}> = ({ refElements, hoverOnIndex }) => {
   if (refElements.length === 0) {
     return [];
   }
   return Array.from(Array(refElements.length), (_, k) => k).map((index) => {
-    return {
-      className: [
-        styles.fixedInflatedBlock,
-        index === hoverOnIndex ? styles.hoverOn : '',
-      ].join(' '),
-      styles: { maxWidth: refElements[index].clientWidth },
-    };
+    return (
+      <div
+        key={index}
+        className={index === hoverOnIndex ? styles.hoverOn : ''}
+        style={{ width: refElements[index].clientWidth }}
+      />
+    );
   });
 };
