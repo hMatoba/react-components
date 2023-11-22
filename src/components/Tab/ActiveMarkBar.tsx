@@ -1,83 +1,42 @@
-import { useEffect, useMemo, useState } from 'react';
+import React from 'react';
 import styles from './Tabs.module.scss';
-
-type Visibility = 'visible' | 'hidden';
 
 type Props = {
   refElements: HTMLCollection | undefined;
   selectedTabIndex: number;
-  selectedTabElement: Element | undefined;
 };
 
 export const ActiveMarkBar: React.FC<Props> = ({
   refElements,
   selectedTabIndex,
+}) => {
+  const selectedTabElement = refElements?.[selectedTabIndex];
+
+  return (
+    <div className={styles.selectedMarkBar}>
+      <ActiveMark selectedTabElement={selectedTabElement} />
+    </div>
+  );
+};
+
+const ActiveMark: React.FC<{ selectedTabElement: Element | undefined }> = ({
   selectedTabElement,
 }) => {
-  const _refElements = Array.from(refElements ?? []);
-  const nonActiveMarkProps = getNonActiveMarkProps(
-    _refElements,
-    selectedTabIndex,
-  );
-  const [activeMarkVisibility, setActiveMarkVisibility] =
-    useState<Visibility>('hidden');
-
-  useEffect(() => {
-    setTimeout(() => setActiveMarkVisibility('visible'), 200);
-  });
-
-  const markProps = useMemo(
-    () => [
-      ...nonActiveMarkProps,
-      getActiveMarkProp(selectedTabElement, activeMarkVisibility),
-    ],
-    [activeMarkVisibility, nonActiveMarkProps, selectedTabElement],
-  );
-
-  const markElementsOnBar = useMemo(
-    () =>
-      markProps.map((props, index) => {
-        return (
-          <div key={index} className={props.className} style={props.styles} />
-        );
-      }),
-    [markProps],
-  );
-
-  return <div className={styles.selectedMarkBar}>{markElementsOnBar}</div>;
-};
-
-const getNonActiveMarkProps = (
-  refElements: Element[],
-  selectedItemIndex: number,
-) => {
-  if (refElements.length === 0) {
-    return [];
+  if (!(selectedTabElement instanceof HTMLDivElement)) {
+    return null;
   }
-  return Array.from(Array(refElements.length - 1), (_, k) => k).map((index) => {
-    return {
-      className: [
-        styles.inactiveMark,
-        index >= selectedItemIndex
-          ? styles.deflatedBlock
-          : styles.inflatedBlock,
-      ].join(' '),
-      styles: { maxWidth: refElements[index].clientWidth },
-    };
-  });
-};
-
-const getActiveMarkProp = (
-  selectedTabElement: Element | undefined,
-  activeMarkVisibility: Visibility,
-) => {
-  const selectedTabWidth = selectedTabElement?.clientWidth ?? 0;
-  return {
-    className: styles.activeMark,
-    styles: {
-      maxWidth: selectedTabWidth,
-      positionn: 'relative',
-      visibility: activeMarkVisibility,
-    },
-  };
+  const selectedTabWidth = selectedTabElement?.offsetWidth ?? 0;
+  const offsetLeft =
+    (selectedTabElement?.offsetLeft ?? 0) -
+    (selectedTabElement?.parentElement?.offsetLeft ?? 0);
+  return (
+    <div
+      className={styles.activeMark}
+      style={{
+        position: 'absolute',
+        left: `${offsetLeft}px`,
+        width: `${selectedTabWidth}px`,
+      }}
+    />
+  );
 };

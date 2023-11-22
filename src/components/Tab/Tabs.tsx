@@ -24,8 +24,6 @@ export const Tabs: React.FC<Props> = ({ items, selected, onTabClick }) => {
     setTabElements(divElement.current?.children);
   }, []);
 
-  const selectedTabElement = tabElements?.[selected];
-
   const tabList = useMemo(
     () =>
       items.map((props) => {
@@ -59,11 +57,7 @@ export const Tabs: React.FC<Props> = ({ items, selected, onTabClick }) => {
       </div>
       <div className={styles.statusBar}>
         <HoverMarkBar refElements={tabElements} hoverOnIndex={hoverOn} />
-        <ActiveMarkBar
-          refElements={tabElements}
-          selectedTabIndex={selected}
-          selectedTabElement={selectedTabElement}
-        />
+        <ActiveMarkBar refElements={tabElements} selectedTabIndex={selected} />
       </div>
     </div>
   );
